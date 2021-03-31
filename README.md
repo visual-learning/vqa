@@ -223,7 +223,7 @@ At this point, you should be able to train you network. You implementation in `s
 
 **3.5 Similar to question 2.10, describe anything special about your implementation in the report. Include your figures of training loss and validation accuracy. Compare the performance of co-attention network to the simple baseline.**
 
-## Task 4: Custom Network  (10 points + 10 bonus points)
+## Task 4: Custom Network  (20 bonus points)
 
 Brainstorm some ideas for improvements to existing methods or novel ways to approach the problem. 
 
@@ -275,7 +275,7 @@ Your response to questions
 * 3.3.2 (4 pts)
 * 3.3.3 (4 pts)
 * 3.5 (14 pts)
-* 4.1 (10 pts)
+* 4.1 (bonus 10 pts)
 * 4.2 (bonus 10 pts)
 
 ### Files
