@@ -5,7 +5,7 @@
 - Created By: [Sam Powers](https://www.ri.cmu.edu/ri-people/samantha-powers/), [Kenny Marino](http://kennethmarino.weebly.com/), [Donglai Xiang](https://xiangdonglai.github.io/)
 - TAs: [Sanil Pande](https://sanilpande.github.io/), [Sudeep Dasari](https://sudeepdasari.github.io/), [Ziyan Wang](https://ziyanw1.github.io/)
 - Please post questions, if any, on the piazza for HW3.
-- Total points: 100 + 10 (bonus)
+- Total points: 90 + 20(bonus)
 - Due Date: April 26, 2021 at 11:59pm EST.
 - Please start EARLY!
 
