@@ -1,3 +1,7 @@
+import os
+import torch
+import torch.nn as nn
+
 from student_code.coattention_net import CoattentionNet
 from student_code.experiment_runner_base import ExperimentRunnerBase
 from student_code.vqa_dataset import VqaDataset
@@ -11,10 +15,14 @@ class CoattentionNetExperimentRunner(ExperimentRunnerBase):
                  test_image_dir, test_question_path,test_annotation_path, batch_size, num_epochs,
                  num_data_loader_workers, cache_location, lr, log_validation):
 
-        ############ 3.1 TODO: set up transform and image encoder
+        ############ 3.1 TODO: set up transform
         transform = None
-        image_encoder = None
         ############ 
+        res18 = torch.hub.load('pytorch/vision:v0.9.0', 'resnet18', pretrained=True)
+        image_encoder = nn.Sequential(*list(res18.children())[:-2])
+        image_encoder.eval()
+        for param in image_encoder.parameters():
+            param.requires_grad = False
 
         question_word_list_length = 5746
         answer_list_length = 1000

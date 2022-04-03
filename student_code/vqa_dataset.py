@@ -1,3 +1,7 @@
+import os
+import torch
+
+from PIL import Image
 from torch.utils.data import Dataset
 from external.vqa.vqa import VQA
 
@@ -59,7 +63,7 @@ class VqaDataset(Dataset):
             self.answer_to_id_map = answer_to_id_map
 
 
-     def _create_word_list(self, sentences):
+    def _create_word_list(self, sentences):
         """
         Turn a list of sentences into a list of processed words (no punctuation, lowercase, etc)
         Args:
@@ -114,11 +118,17 @@ class VqaDataset(Dataset):
         ############
 
         if self._cache_location is not None and self._pre_encoder is not None:
-            ############ 3.2 TODO
-            # implement your caching and loading logic here
-
-            ############
-            raise NotImplementedError()
+            # the caching and loading logic here
+            feat_path = os.path.join(self._cache_location, f'{idx}.pt')
+            try:
+                image = torch.load(feat_path)
+            except:
+                image_path = os.path.join(
+                    self._image_dir, self._image_filename_pattern.format(idx))
+                image = Image.open(image_path).convert('RGB')
+                image = self._transform(image).unsqueeze(0)
+                image = self._pre_encoder(image)[0]
+                torch.save(image, feat_path)
         else:
             ############ 1.9 TODO
             # load the image from disk, apply self._transform (if not None)
@@ -130,4 +140,9 @@ class VqaDataset(Dataset):
         # load and encode the question and answers, convert to torch tensors
 
         ############
-        raise NotImplementedError()
+        return {
+            'idx': idx,
+            'image': image,
+            'question': question_tensor,
+            'answers': answers_tensor
+        }
