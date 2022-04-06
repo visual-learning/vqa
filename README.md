@@ -183,13 +183,9 @@ To implement the Co-Attention Network you'll need to:
 2. Implement CoattentionExperimentRunner's optimize method.
 3. Implement CoattentionNet
     - Encode the image in a way that maintains some spatial awareness; you may want to skim through [5] to get a sense for why they upscale the images.
-    - Implement the hierarchical language embedding (words, phrases, question)
-        - Hint: All three layers of the hierarchy will still have a sequence length identical to the original sequence length.
-        This is necessary for attention, though it may be unintuitive for the question encoding.
-    - Implement your selected co-attention method
-        - Consider the attention mechanism separately from the hierarchical question embedding. In particular, you may consider writing a separate nn.Module that handles only attention (e.g some "AttentionNet"), that the CoattentionNet can then use.
-    - Attend to each layer of the hierarchy, creating an attended image and question feature for each
-    - Combine these features to predict the final answer
+    - Understand the hierarchical language embedding (words, phrases, question) and the alternating co-attention module we provided by referring to the paper.
+    - Attend to each layer of the hierarchy, creating an attended image and question feature for each layer.
+    - Combine these features to predict the final answer.
 
 Once again feel free to refer to the [official Torch implementation](https://github.com/jiasenlu/HieCoAttenVQA).
 

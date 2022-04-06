@@ -127,6 +127,17 @@ class CoattentionNet(nn.Module):
 
     def forward(self, image_feat, question_encoding):
         ############ 3.3 TODO
+        # 1. extract hierarchical question
+        pass
+    
+        # 2. Perform attention between image feature and question feature in each hierarchical layer
+        pass
+        
+        # 3. fuse the attended features
+        pass
+        
+        # 4. predict the final answer using the fused feature
+        pass
 
         ############ 
         raise NotImplementedError()
