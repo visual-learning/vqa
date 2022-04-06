@@ -111,15 +111,15 @@ class CoattentionNet(nn.Module):
         super().__init__()
         ############ 3.3 TODO
         self.ques_feat_layer = None
-        
+
         self.word_attention_layer = None
         self.word_attention_layer = None
         self.word_attention_layer = None
-        
+
         self.Ww = None
         self.Wp = None
         self.Ws = None
-        
+
         self.dropout = None # please refer to the paper about when you should use dropout
 
         self.classifier = None
