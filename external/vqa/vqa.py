@@ -86,7 +86,7 @@ class VQA:
             anns = self.dataset['annotations']
         else:
             if not len(imgIds) == 0:
-                anns = sum([self.imgToQA[imgId] for imgId in imgIds if imgId in self.imgToQA], [])
+                anns = [self.imgToQA[imgId] for imgId in imgIds if imgId in self.imgToQA]
             else:
                 anns = self.dataset['annotations']
             anns = anns if len(quesTypes) == 0 else [ann for ann in anns if ann['question_type'] in quesTypes]

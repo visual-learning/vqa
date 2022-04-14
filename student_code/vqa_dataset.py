@@ -119,12 +119,12 @@ class VqaDataset(Dataset):
 
         if self._cache_location is not None and self._pre_encoder is not None:
             # the caching and loading logic here
-            feat_path = os.path.join(self._cache_location, f'{idx}.pt')
+            feat_path = os.path.join(self._cache_location, f'{image_id}.pt')
             try:
                 image = torch.load(feat_path)
             except:
                 image_path = os.path.join(
-                    self._image_dir, self._image_filename_pattern.format(idx))
+                    self._image_dir, self._image_filename_pattern.format(image_id))
                 image = Image.open(image_path).convert('RGB')
                 image = self._transform(image).unsqueeze(0)
                 image = self._pre_encoder(image)[0]
