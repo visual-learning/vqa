@@ -113,8 +113,8 @@ class CoattentionNet(nn.Module):
         self.ques_feat_layer = None
 
         self.word_attention_layer = None
-        self.word_attention_layer = None
-        self.word_attention_layer = None
+        self.phrase_attention = None
+        self.question_attention = None
 
         self.Ww = None
         self.Wp = None
