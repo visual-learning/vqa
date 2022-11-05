@@ -136,9 +136,6 @@ class Trainer:
                     # add code to show the question
                     # the gt answer
                     # and the predicted answer
-                    # if your model's prediction is correct,
-                    # show the predicted answer as gt
-                    # so as to avoid confusion due to multiple correct answers
             # add code to plot the current accuracy
         acc = n_correct / n_samples
         print(acc)

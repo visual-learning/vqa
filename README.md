@@ -17,7 +17,7 @@ Our goal is to implement two such answer classifiers. First, we will implement a
 ## Setup
 
 You can use the conda environment we used for the object localization assignment (PyTorch 1.11). Make sure that at least your PyTorch version is 1.11 or newer.
-Additionally install the libraries in ```requirements.txt```.
+Additionally install the libraries in ```requirements.txt```. For reference, we used torch 1.11.0, torchvision 0.12 and transformers==4.12.3, but different versions should work as well.
 
 We provide you with a clean VQA Python API that i) works with Python 3, ii) has detailed docstrings on the methods you may need, iii) includes examples on how to use it (simply run ```python vqa_api.py``` and check the corresponding commands). Familiarizing yourself with this class will help in writing the dataset class later!
 
@@ -73,14 +73,14 @@ We provide skeleton code in `main.py`. We use Adam optimizer, although you can e
 ### Evaluation
 The prediction is considered accurate if the most confident answer is correct, i.e. if it is one of the multiple correct answers. We provide the code to compute accuracy.
 
-**2.6 Complete the `train_test_loop` method to monitor the performance in Tensorboard. Plot the loss, accuracy and multiple images (at least 3) with the respective questions and answers (predicted and ground-truth). Include all plots in your report.**
+**2.6 Complete the `train_test_loop` method to monitor the performance in Tensorboard. Plot the loss and accuracy and include these in your report. Additionally show multiple image-question pairs (at least 3) with the respective answers (predicted and ground-truth).** For the image-question pairs, just show results from your best model, not at intermediate epochs. If an image-question pair has more than one ground-truth answers, randomly select one to show.
 
-Now, we are ready to train/test the model! Aim for a validation accuracy of 50% (or near that). For reference, the TAs were able to get 52% accuracy with the defaults hyperparameters in 10 epochs. You're free to use different hyperparameters but not to change the architecture at this point.
+Now, we are ready to train/test the model! Aim for a validation accuracy of 50%, but anything above 45% is fine. For reference, the TAs were able to get 52% accuracy with the defaults hyperparameters in 10 epochs. You're free to use different hyperparameters but not to change the architecture at this point.
 
 ### Analysis
 We want to get an idea of why our performance is so low. You may already have an idea actually from what you visualized.
 
-**2.7 Make a histogram of the frequencies of the predicted answers (all 5217) without labels.** Specifically, gather all the predicted answers of your model through the whole dataset. For each sample, keep only the argmax (most confident) prediction. Then compute the frequency of each answer, sort in decreasing order of frequency and plot the histogram.
+**2.7 Make a histogram of the frequencies of the predicted answers (all 5217) without labels.** Specifically, gather all the predicted answers of your model through the whole dataset. For each sample, keep only the argmax (most confident) prediction. Then compute the frequency of each predicted answer, sort in decreasing order of frequency and plot the histogram. You can use matplotlib to do this. For reference, the TAs used `pyplot.bar`.
 
 **2.8 What are the 10 most frequently predicted classes? Why do you think this happens? You can optionally visualize the frequency of ground-truth answers in the training set.**
 
@@ -128,7 +128,7 @@ Once you implement the TODOs, [download](https://drive.google.com/file/d/1NOfqxc
 
 Hints: do not change any layer's name. The current `__init__` method contains the names of all layers that you will need. We've implemented one of the self-attention layers for reference. Build the others based on that and the comments. `nn.MultiheadAttention` directly implements multi-head attention. Make sure to initialize it and call it with appropriate arguments. This is a common source of bugs.
 
-**3.2 Load the trained weights and reproduce our result.**
+**3.2 Load the trained weights and reproduce our result.** This will be tested via an automated Gradescope grader that will try to reproduce our result using your model class.
 
 **3.3 How does the histogram of answers look now?**
 

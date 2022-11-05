@@ -218,7 +218,7 @@ if __name__ == "__main__":
     # How the data looks like
     print(len(vqa_api.qa))  # equal to the number of questions
     print(len(vqa_api.qqa))  # equal to the number of questions
-    print(len(vqa_api.img2qa))  # equal to the number of questions
+    print(len(vqa_api.img2qa))  # equal to the number of images
 
     # Let's see an example
     print('Image id for question 4870250')
