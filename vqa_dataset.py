@@ -100,16 +100,16 @@ class VQADataset(Dataset):
         std_ = [0.229, 0.224, 0.225]
         preprocessing = transforms.Compose([
             transforms.Pad((0, 0, max_wh - width, max_wh - height)),
-            transforms.Resize((self.size, self.size)),
-            transforms.ToTensor(),
-            transforms.Normalize(mean_, std_)
+            TODO,  # resize to self.size
+            TODO,  # convert to tensor
+            TODO  # normalize with mean_ and std_
         ])
         img = preprocessing(_img)
-        orig_prep = transforms.Compose([
+        orig_prep = transforms.Compose([  # do not normalize!
             transforms.Pad((0, 0, max_wh - width, max_wh - height)),
-            transforms.Resize((self.size, self.size)),
-            transforms.ToTensor()
-        ])
+            TODO,  # resize to self.size
+            TODO  # convert to tensor
+        ])  # this is for visualizations only
         orig_img = orig_prep(_img)
 
         # Encode answer to tensor
@@ -132,3 +132,4 @@ class VQADataset(Dataset):
             'answers': a_tensor,
             'orig_img': orig_img
         }
+

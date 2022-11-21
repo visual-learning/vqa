@@ -1,4 +1,5 @@
 """Base experiment runner class for VQA experiments."""
+
 import argparse
 import os
 
@@ -88,6 +89,7 @@ class Trainer:
 
     def train_test_loop(self, mode='train', epoch=1000):
         n_correct, n_samples = 0, 0
+        # add code to collect all your answers
         for step, data in tqdm(enumerate(self.data_loaders[mode])):
 
             # Forward pass
@@ -126,7 +128,7 @@ class Trainer:
                 'Loss/' + mode, loss.item(),
                 epoch * len(self.data_loaders[mode]) + step
             )
-            if mode == 'val' and step == 0:  # change this to show other images
+            if mode == 'val' and step == 9:  # change this to show other images
                 _n_show = 3  # how many images to plot
                 for i in range(_n_show):
                     self.writer.add_image(
@@ -136,9 +138,15 @@ class Trainer:
                     # add code to show the question
                     # the gt answer
                     # and the predicted answer
+                    # this is for debugging, to qualitatively monitor training
             # add code to plot the current accuracy
         acc = n_correct / n_samples
         print(acc)
+        # once training is complete and only for the validation set
+        # show a bar plot of the answers' frequency sorted in descending order
+        # you don't need to show names for the above
+        # also print (or plot if you prefer) the 10 most frequent anwers
+        # we want names here
         return acc
 
 
@@ -211,3 +219,4 @@ def main():
 if __name__ == "__main__":
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
     main()
+

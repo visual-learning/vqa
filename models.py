@@ -154,7 +154,7 @@ class CrossAttentionLayer(nn.Module):
         self.dropout_2 = TODO
         self.norm_2 = TODO
 
-        # Cross attention from seq1 to seq2
+        # Cross attention from seq1 to seq2 (seq1 forms queries)
         self.cross_12 = TODO
         self.dropout_12 = TODO
         self.norm_12 = TODO
@@ -163,7 +163,7 @@ class CrossAttentionLayer(nn.Module):
         self.ffn_12 = nn.Sequential(TODO)  # hidden dim is 1024
         self.norm_122 = TODO
 
-        # Cross attention from seq2 to seq1
+        # Cross attention from seq2 to seq1 (seq2 forms queries)
         self.cross_21 = TODO
         self.dropout_21 = TODO
         self.norm_21 = TODO
@@ -207,10 +207,10 @@ class CrossAttentionLayer(nn.Module):
             q2 = q2 + seq2_pos
             k2 = k2 + seq2_pos
 
-        # Cross-attention from seq1 to seq2 and FFN
+        # Cross-attention from seq1 to seq2 (seq1 forms queries) and FFN
         TODO
 
-        # Cross-attention from seq2 to seq1 and FFN
+        # Cross-attention from seq2 to seq1 (seq2 forms queries) and FFN
         TODO
 
         return seq1, seq2
@@ -252,3 +252,4 @@ class PositionEmbeddingSine(nn.Module):
         ).flatten(3)
         pos = torch.cat((pos_y, pos_x), dim=3).permute(0, 3, 1, 2)
         return pos
+
